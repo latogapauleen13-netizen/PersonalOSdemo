@@ -1,0 +1,13 @@
+{
+  "name": "LIFE RPG Personal Operating System",
+  "short_name": "LIFE RPG",
+  "description": "A simple personal command center for time, school, work, health, and money.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#041018",
+  "theme_color": "#07131d",
+  "orientation": "any",
+  "icons": [
+    { "src": "app-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
