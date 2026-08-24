@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#07131d">
+  <meta name="description" content="LIFE RPG personal command center for your time, school, work, health, and money.">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="app-icon.svg" type="image/svg+xml">
+  <title>LIFE RPG | Personal Operating System</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="enhancements.css">
+  <link rel="stylesheet" href="calendar.css">
+  <link rel="stylesheet" href="controls.css">
+  <link rel="stylesheet" href="nursing-sheet.css">
+  <link rel="stylesheet" href="spreadsheet.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" aria-label="Primary navigation">
+      <a class="brand" href="#home" data-view="home"><span class="brand-mark">+</span><span>LIFE <b>RPG</b></span></a>
+      <div class="sidebar-label">Your command center</div>
+      <nav class="nav-list">
+        <button class="nav-item active" data-view="home"><span class="nav-icon">⌂</span>Home</button>
+        <button class="nav-item" data-view="today"><span class="nav-icon">▣</span>Today</button>
+        <button class="nav-item" data-view="quests"><span class="nav-icon">◈</span>Quests</button>
+        <button class="nav-item" data-view="nursing"><span class="nav-icon">✚</span>Nursing</button>
+        <button class="nav-item" data-view="career"><span class="nav-icon">↗</span>Career</button>
+        <button class="nav-item" data-view="velar"><span class="nav-icon">◆</span>VELAR</button>
+        <button class="nav-item" data-view="health"><span class="nav-icon">♡</span>Health</button>
+        <button class="nav-item" data-view="finance"><span class="nav-icon">₱</span>Finance</button>
+        <button class="nav-item" data-view="character"><span class="nav-icon">◎</span>Character</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <button class="nav-item" data-view="settings"><span class="nav-icon">⚙</span>Settings</button>
+        <div class="profile-mini"><div class="avatar">P</div><div><strong>Pau</strong><span>Level <span id="side-level">7</span> explorer</span></div><span class="status-dot"></span></div>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="mobile-menu" id="mobile-menu" aria-label="Open navigation">☰</button>
+        <div class="breadcrumb"><span class="pulse-dot"></span><span id="view-label">Home base</span></div>
+        <div class="top-actions"><button class="icon-button" id="quick-add-top" aria-label="Quick add">+</button><button class="avatar top-avatar">P</button></div>
+      </header>
+
+      <div id="app-view" class="view-container"></div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="quest-modal" aria-hidden="true">
+    <form class="modal" id="quest-form">
+      <button class="modal-close" type="button" data-close-modal>×</button>
+      <div class="eyebrow">New objective</div>
+      <h2>Add a quest</h2>
+      <p class="modal-copy">Give the next meaningful thing a little momentum.</p>
+      <label>Quest title<input name="title" required placeholder="e.g. Review anatomy notes"></label>
+      <div class="form-row"><label>Category<select name="category"><option value="Nursing">Nursing</option><option value="Career">Career</option><option value="VELAR">VELAR</option><option value="Health">Health</option><option value="Finance">Finance</option></select></label><label>Priority<select name="priority"><option>Urgent & Important</option><option>Urgent</option><option>Important</option><option>Non-Urgent</option><option>Non-Urgent & Non-Important</option></select></label></div>
+      <div class="form-row"><label>Reward<input name="xp" type="number" value="30" min="5" max="500"> <span class="input-suffix">XP</span></label><label>Start<input name="time" type="time" value="19:00"></label></div>
+      <div class="form-row"><label>End<input name="end" type="time" value="20:00"></label><label>Type<select name="type"><option>Side quest</option><option>Main quest</option><option>Boss quest</option></select></label></div>
+      <button class="primary-button full-width" type="submit">Add to today <span>→</span></button>
+    </form>
+  </div>
+  <div class="toast" id="toast"><span class="toast-icon">+</span><div><strong id="toast-title">Quest complete</strong><span id="toast-copy">+30 XP earned</span></div></div>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+      window.addEventListener('load', () => navigator.serviceWorker.register('./service-worker.js'));
+    }
+  </script>
+</body>
+</html>
